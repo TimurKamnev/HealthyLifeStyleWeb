@@ -17,7 +17,6 @@ namespace StudentManager.Backend.Entities
         public int Weight { get; set; }
         public Gender Gender { get; set; }
         public bool IsAdmin { get; set; } = false;
-        public List<Image> Images { get; set; }
         public enum Gender
         {
             Male,

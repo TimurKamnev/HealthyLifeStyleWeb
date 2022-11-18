@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace StudentManager.Backend.Entities
 {
-    internal class FitnessProgram
+    public class FitnessProgram
     {
+        public int Id { get; set; }
+        public List<Training> Trainings { get; set; }
+        public List<FitnessTip> FintessTips { get; set; }
+        public FitnessType FitnessType { get; set; }
+        public int FitnessTypeId { get; set; }
     }
 }

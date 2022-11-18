@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StudentManager.Backend.Entities
 {
-    internal class Woman
+    public class Woman : Person
     {
+        public int Id { get; set; } 
     }
 }

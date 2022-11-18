@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentManager.Backend.Entities
 {
-    public class Man : Person
+    internal class PersonFitnessProgram
     {
-        public string PowerLevel { get; set; }
     }
 }
