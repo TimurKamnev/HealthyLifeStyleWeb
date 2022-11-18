@@ -1,13 +1,18 @@
-﻿using StudentManager.Backend.Entities;
+﻿using FitnessWeb.Models;
+using System.Linq.Expressions;
 
-namespace StudentManager.Backend.Repositories;
-
-public interface IRepository<T> where T : BaseEntity
+namespace Fitness.Infrastracture
 {
-    public T Create(T entity);
-    public List<T> ReadAll();
-    public T ReadById(int id);
-    public T Update(T entity);
-    public void Delete(T entity);
-    public void DeleteById(int id);
+    public interface IRepository<T> where T : class
+    {
+        IEnumerable<T> GetAll();
+        T GetById(object id);
+        void Insert(T obj);
+        void Update(T obj);
+        void Delete(object id);
+        IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> GetWithInclude(Expression<Func<T, bool>>? predicate, params Expression<Func<T, object>>[] paths);
+        void Save();
+
+    }
 }
