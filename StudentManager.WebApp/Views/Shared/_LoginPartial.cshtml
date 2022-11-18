@@ -1,8 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using StudentManager.WebApp.Areas.Identity.Data
 
-@inject SignInManager<Mozgoeb> SignInManager
-@inject UserManager<Mozgoeb> UserManager
+@inject SignInManager<CreatedUser> SignInManager
+@inject UserManager<CreatedUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

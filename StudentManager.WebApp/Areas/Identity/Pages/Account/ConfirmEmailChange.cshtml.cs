@@ -16,10 +16,10 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailChangeModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
-        private readonly SignInManager<Mozgoeb> _signInManager;
+        private readonly UserManager<CreatedUser> _userManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
 
-        public ConfirmEmailChangeModel(UserManager<Mozgoeb> userManager, SignInManager<Mozgoeb> signInManager)
+        public ConfirmEmailChangeModel(UserManager<CreatedUser> userManager, SignInManager<CreatedUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

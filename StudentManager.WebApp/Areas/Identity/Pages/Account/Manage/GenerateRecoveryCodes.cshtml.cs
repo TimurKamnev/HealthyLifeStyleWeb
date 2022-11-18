@@ -15,11 +15,11 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class GenerateRecoveryCodesModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
         private readonly ILogger<GenerateRecoveryCodesModel> _logger;
 
         public GenerateRecoveryCodesModel(
-            UserManager<Mozgoeb> userManager,
+            UserManager<CreatedUser> userManager,
             ILogger<GenerateRecoveryCodesModel> logger)
         {
             _userManager = userManager;

@@ -18,11 +18,11 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class DownloadPersonalDataModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
         private readonly ILogger<DownloadPersonalDataModel> _logger;
 
         public DownloadPersonalDataModel(
-            UserManager<Mozgoeb> userManager,
+            UserManager<CreatedUser> userManager,
             ILogger<DownloadPersonalDataModel> logger)
         {
             _userManager = userManager;
@@ -46,7 +46,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 
             // Only include personal data for download
             var personalData = new Dictionary<string, string>();
-            var personalDataProps = typeof(Mozgoeb).GetProperties().Where(
+            var personalDataProps = typeof(CreatedUser).GetProperties().Where(
                             prop => Attribute.IsDefined(prop, typeof(PersonalDataAttribute)));
             foreach (var p in personalDataProps)
             {

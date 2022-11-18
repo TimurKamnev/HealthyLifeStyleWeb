@@ -4,6 +4,6 @@ namespace StudentManager.WebApp.Areas
 {
     public interface IShortedUserController
     {
-        public void AddUser(Mozgoeb user);
+        public void AddUser(CreatedUser user);
     }
 }

@@ -19,10 +19,10 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class ForgotPasswordModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordModel(UserManager<Mozgoeb> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<CreatedUser> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;

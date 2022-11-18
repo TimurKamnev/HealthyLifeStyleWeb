@@ -12,11 +12,11 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class PersonalDataModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
         private readonly ILogger<PersonalDataModel> _logger;
 
         public PersonalDataModel(
-            UserManager<Mozgoeb> userManager,
+            UserManager<CreatedUser> userManager,
             ILogger<PersonalDataModel> logger)
         {
             _userManager = userManager;

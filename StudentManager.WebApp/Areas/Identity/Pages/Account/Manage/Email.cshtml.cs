@@ -18,13 +18,13 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class EmailModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
-        private readonly SignInManager<Mozgoeb> _signInManager;
+        private readonly UserManager<CreatedUser> _userManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
         private readonly IEmailSender _emailSender;
 
         public EmailModel(
-            UserManager<Mozgoeb> userManager,
-            SignInManager<Mozgoeb> signInManager,
+            UserManager<CreatedUser> userManager,
+            SignInManager<CreatedUser> signInManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -74,7 +74,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
             public string NewEmail { get; set; }
         }
 
-        private async Task LoadAsync(Mozgoeb user)
+        private async Task LoadAsync(CreatedUser user)
         {
             var email = await _userManager.GetEmailAsync(user);
             Email = email;

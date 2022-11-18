@@ -14,11 +14,11 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class Disable2faModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
         private readonly ILogger<Disable2faModel> _logger;
 
         public Disable2faModel(
-            UserManager<Mozgoeb> userManager,
+            UserManager<CreatedUser> userManager,
             ILogger<Disable2faModel> logger)
         {
             _userManager = userManager;

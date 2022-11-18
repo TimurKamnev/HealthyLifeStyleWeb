@@ -17,9 +17,9 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class ResetPasswordModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
 
-        public ResetPasswordModel(UserManager<Mozgoeb> userManager)
+        public ResetPasswordModel(UserManager<CreatedUser> userManager)
         {
             _userManager = userManager;
         }

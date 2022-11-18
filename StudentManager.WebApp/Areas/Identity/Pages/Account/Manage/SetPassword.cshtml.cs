@@ -14,12 +14,12 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
-        private readonly SignInManager<Mozgoeb> _signInManager;
+        private readonly UserManager<CreatedUser> _userManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
 
         public SetPasswordModel(
-            UserManager<Mozgoeb> userManager,
-            SignInManager<Mozgoeb> signInManager)
+            UserManager<CreatedUser> userManager,
+            SignInManager<CreatedUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

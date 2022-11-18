@@ -5,7 +5,7 @@ using StudentManager.WebApp.Areas.Identity.Data;
 
 namespace StudentManager.WebApp.Areas.Identity.Data;
 
-public class IdentityContext : IdentityDbContext<Mozgoeb>
+public class IdentityContext : IdentityDbContext<CreatedUser>
 {
     public IdentityContext(DbContextOptions<IdentityContext> options)
         : base(options)

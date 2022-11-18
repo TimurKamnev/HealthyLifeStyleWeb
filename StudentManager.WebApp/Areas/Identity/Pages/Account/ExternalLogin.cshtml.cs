@@ -24,17 +24,17 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ExternalLoginModel : PageModel
     {
-        private readonly SignInManager<Mozgoeb> _signInManager;
-        private readonly UserManager<Mozgoeb> _userManager;
-        private readonly IUserStore<Mozgoeb> _userStore;
-        private readonly IUserEmailStore<Mozgoeb> _emailStore;
+        private readonly SignInManager<CreatedUser> _signInManager;
+        private readonly UserManager<CreatedUser> _userManager;
+        private readonly IUserStore<CreatedUser> _userStore;
+        private readonly IUserEmailStore<CreatedUser> _emailStore;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
 
         public ExternalLoginModel(
-            SignInManager<Mozgoeb> signInManager,
-            UserManager<Mozgoeb> userManager,
-            IUserStore<Mozgoeb> userStore,
+            SignInManager<CreatedUser> signInManager,
+            UserManager<CreatedUser> userManager,
+            IUserStore<CreatedUser> userStore,
             ILogger<ExternalLoginModel> logger,
             IEmailSender emailSender)
         {
@@ -198,27 +198,27 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private Mozgoeb CreateUser()
+        private CreatedUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<Mozgoeb>();
+                return Activator.CreateInstance<CreatedUser>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(Mozgoeb)}'. " +
-                    $"Ensure that '{nameof(Mozgoeb)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(CreatedUser)}'. " +
+                    $"Ensure that '{nameof(CreatedUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the external login page in /Areas/Identity/Pages/Account/ExternalLogin.cshtml");
             }
         }
 
-        private IUserEmailStore<Mozgoeb> GetEmailStore()
+        private IUserEmailStore<CreatedUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<Mozgoeb>)_userStore;
+            return (IUserEmailStore<CreatedUser>)_userStore;
         }
     }
 }

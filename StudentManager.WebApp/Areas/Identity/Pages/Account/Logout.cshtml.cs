@@ -15,10 +15,10 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<Mozgoeb> _signInManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
         private readonly ILogger<LogoutModel> _logger;
 
-        public LogoutModel(SignInManager<Mozgoeb> signInManager, ILogger<LogoutModel> logger)
+        public LogoutModel(SignInManager<CreatedUser> signInManager, ILogger<LogoutModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;

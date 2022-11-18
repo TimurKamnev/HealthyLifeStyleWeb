@@ -14,7 +14,7 @@ namespace StudentManager.WebApp.Controllers
             _dbContext = dbContext;
         }
 
-        public void AddUser(Mozgoeb user)
+        public void AddUser(CreatedUser user)
         {
             var shortenUser = MapUser(user);
             _dbContext.Users.Add(shortenUser);
@@ -22,7 +22,7 @@ namespace StudentManager.WebApp.Controllers
             _dbContext.SaveChanges();
         }
 
-        private ShortenUser MapUser(Mozgoeb mozgoeb)
+        private ShortenUser MapUser(CreatedUser mozgoeb)
         {
             return new ShortenUser()
             {

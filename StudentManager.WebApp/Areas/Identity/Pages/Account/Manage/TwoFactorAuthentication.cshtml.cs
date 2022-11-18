@@ -14,12 +14,12 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class TwoFactorAuthenticationModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
-        private readonly SignInManager<Mozgoeb> _signInManager;
+        private readonly UserManager<CreatedUser> _userManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
         private readonly ILogger<TwoFactorAuthenticationModel> _logger;
 
         public TwoFactorAuthenticationModel(
-            UserManager<Mozgoeb> userManager, SignInManager<Mozgoeb> signInManager, ILogger<TwoFactorAuthenticationModel> logger)
+            UserManager<CreatedUser> userManager, SignInManager<CreatedUser> signInManager, ILogger<TwoFactorAuthenticationModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;

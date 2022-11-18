@@ -17,9 +17,9 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<Mozgoeb> userManager)
+        public ConfirmEmailModel(UserManager<CreatedUser> userManager)
         {
             _userManager = userManager;
         }

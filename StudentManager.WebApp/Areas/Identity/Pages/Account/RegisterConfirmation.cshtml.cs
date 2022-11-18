@@ -18,10 +18,10 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly UserManager<CreatedUser> _userManager;
         private readonly IEmailSender _sender;
 
-        public RegisterConfirmationModel(UserManager<Mozgoeb> userManager, IEmailSender sender)
+        public RegisterConfirmationModel(UserManager<CreatedUser> userManager, IEmailSender sender)
         {
             _userManager = userManager;
             _sender = sender;

@@ -17,13 +17,13 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class LoginWith2faModel : PageModel
     {
-        private readonly SignInManager<Mozgoeb> _signInManager;
-        private readonly UserManager<Mozgoeb> _userManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
+        private readonly UserManager<CreatedUser> _userManager;
         private readonly ILogger<LoginWith2faModel> _logger;
 
         public LoginWith2faModel(
-            SignInManager<Mozgoeb> signInManager,
-            UserManager<Mozgoeb> userManager,
+            SignInManager<CreatedUser> signInManager,
+            UserManager<CreatedUser> userManager,
             ILogger<LoginWith2faModel> logger)
         {
             _signInManager = signInManager;

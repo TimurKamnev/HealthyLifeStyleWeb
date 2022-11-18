@@ -17,14 +17,14 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class ExternalLoginsModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
-        private readonly SignInManager<Mozgoeb> _signInManager;
-        private readonly IUserStore<Mozgoeb> _userStore;
+        private readonly UserManager<CreatedUser> _userManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
+        private readonly IUserStore<CreatedUser> _userStore;
 
         public ExternalLoginsModel(
-            UserManager<Mozgoeb> userManager,
-            SignInManager<Mozgoeb> signInManager,
-            IUserStore<Mozgoeb> userStore)
+            UserManager<CreatedUser> userManager,
+            SignInManager<CreatedUser> signInManager,
+            IUserStore<CreatedUser> userStore)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -70,7 +70,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
                 .ToList();
 
             string passwordHash = null;
-            if (_userStore is IUserPasswordStore<Mozgoeb> userPasswordStore)
+            if (_userStore is IUserPasswordStore<CreatedUser> userPasswordStore)
             {
                 passwordHash = await userPasswordStore.GetPasswordHashAsync(user, HttpContext.RequestAborted);
             }

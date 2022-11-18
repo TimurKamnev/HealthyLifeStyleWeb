@@ -15,12 +15,12 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        private readonly UserManager<Mozgoeb> _userManager;
-        private readonly SignInManager<Mozgoeb> _signInManager;
+        private readonly UserManager<CreatedUser> _userManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
 
         public IndexModel(
-            UserManager<Mozgoeb> userManager,
-            SignInManager<Mozgoeb> signInManager)
+            UserManager<CreatedUser> userManager,
+            SignInManager<CreatedUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -61,7 +61,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
-        private async Task LoadAsync(Mozgoeb user)
+        private async Task LoadAsync(CreatedUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);

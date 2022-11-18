@@ -1,4 +1,4 @@
-﻿@inject SignInManager<Mozgoeb> SignInManager
+﻿@inject SignInManager<CreatedUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

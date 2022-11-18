@@ -20,10 +20,10 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<Mozgoeb> _signInManager;
+        private readonly SignInManager<CreatedUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<Mozgoeb> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<CreatedUser> signInManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
@@ -81,7 +81,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Запомнить меня?")]
             public bool RememberMe { get; set; }
         }
 
