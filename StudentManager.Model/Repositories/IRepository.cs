@@ -1,7 +1,7 @@
-﻿using FitnessWeb.Models;
+﻿using StudentManager.Backend;
 using System.Linq.Expressions;
 
-namespace Fitness.Infrastracture
+namespace StudentManager.Backend.Entities
 {
     public interface IRepository<T> where T : class
     {

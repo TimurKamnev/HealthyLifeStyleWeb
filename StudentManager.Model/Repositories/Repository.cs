@@ -1,4 +1,4 @@
-﻿using FitnessWeb.Models;
+﻿using StudentManager.Backend.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -6,14 +6,14 @@ namespace Fitness.Infrastracture
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private FitnessContext _context = null;
+        private AppDbContext _context = null;
         private DbSet<T> table = null;
         public Repository()
         {
-            this._context = new FitnessContext();
+            this._context = new AppDbContext();
             table = _context.Set<T>();
         }
-        public Repository(FitnessContext _context)
+        public Repository(AppDbContext _context)
         {
             this._context = _context;
             table = _context.Set<T>();
