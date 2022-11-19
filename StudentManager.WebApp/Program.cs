@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using StudentManager.Backend.Contexts;
 using Microsoft.AspNetCore.Identity;
 using StudentManager.WebApp.Areas.Identity.Data;
 using StudentManager.WebApp.Controllers;
 using StudentManager.WebApp.Areas;
+using Fitness.Infrastracture;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");

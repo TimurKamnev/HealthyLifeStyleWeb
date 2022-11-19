@@ -8,6 +8,6 @@ namespace StudentManager.Backend.Entities
 {
     public class Woman : Person
     {
-        public int Id { get; set; } 
+        public int MenstruationCycle { get; set; }
     }
 }

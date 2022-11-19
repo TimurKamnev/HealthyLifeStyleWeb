@@ -1,6 +1,6 @@
-﻿using Fitness.Core.Models;
-using FitnessWeb.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using StudentManager.Backend.Entities;
+using StudentManager.Backend.Indentity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +12,25 @@ namespace Fitness.Infrastracture
     public class AppDbContext : DbContext
     {
         public AppDbContext()
-        {}
+        { }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {}
+        { }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<Training> Exercise { get; set; }
         public virtual DbSet<FitnessProgram> FitnessProgram { get; set; }
         public virtual DbSet<FitnessTip> FitnessTip { get; set; }
         public virtual DbSet<Training> Training { get; set; }
         public virtual DbSet<PersonFitnessProgram> PersonFitnessProgram { get; set; }
-        public virtual DbSet<Award> Award { get; set; }
         public virtual DbSet<Achievement> Achievement { get; set; }
         public virtual DbSet<FitnessType> FitnessType { get; set; }
-        public DbSet<Image> Images { get; set; }
+        public DbSet<ShortenUser> Users { get; set; }
+        public DbSet<LogModel> Logs { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=localhost;DataBase=FitnessApplication;Trusted_Connection=True;MultipleActiveResultSets=True");
+            optionsBuilder.UseSqlServer("Server=localhost;DataBase=HealthyLifeStyleDb;Trusted_Connection=True;MultipleActiveResultSets=True");
 
         }
 
@@ -69,13 +69,8 @@ namespace Fitness.Infrastracture
                 .WithOne(x => x.FitnessProgram)
                 .HasForeignKey(x => x.FitnessProgramId)
                 .OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<Achievement>()
-                .HasMany(x => x.Awards)
-                .WithOne(x => x.Achievement)
-                .HasForeignKey(x => x.AchievementId)
-                .IsRequired();
 
-           //one-to-one
+            //one-to-one
             modelBuilder.Entity<FitnessType>()
                 .HasKey(s => s.FitnessProgramId);
 
@@ -83,14 +78,6 @@ namespace Fitness.Infrastracture
                 .HasOne(x => x.FitnessType)
                 .WithOne(x => x.FitnessProgram);
 
-            //Concurrency
-            modelBuilder.Entity<Award>()
-                .Property(p => p.Type)
-                .IsConcurrencyToken();
-
-            modelBuilder.Entity<Award>()
-                .Property(p => p.Timestamp)
-                .IsRowVersion();
         }
     }
 }

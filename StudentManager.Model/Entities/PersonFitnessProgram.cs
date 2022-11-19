@@ -13,6 +13,7 @@ namespace StudentManager.Backend.Entities
         public int PersonId { get; set; }
         public FitnessProgram FitnessProgram { get; set; }
         public int FitnessProgramId { get; set; }
+
         public bool IsCurrent { get; set; }
     }
 }
