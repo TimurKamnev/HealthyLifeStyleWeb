@@ -31,7 +31,6 @@ namespace StudentManager.Backend.Entities
     public enum Gender
     {
         Male,
-        Female,
-        Child
+        Female
     }
 }

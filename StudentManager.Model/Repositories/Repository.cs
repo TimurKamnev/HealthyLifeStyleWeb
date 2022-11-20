@@ -13,6 +13,7 @@ namespace Fitness.Infrastracture
             this._context = new AppDbContext();
             table = _context.Set<T>();
         }
+
         public Repository(AppDbContext _context)
         {
             this._context = _context;
