@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using StudentManager.Backend.Entities;
 using StudentManager.Backend.Indentity;
 
@@ -28,6 +29,14 @@ namespace Fitness.Infrastracture
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("Server=localhost;DataBase=HealthyLifeStyleDb;Trusted_Connection=True;MultipleActiveResultSets=True");
 
+            IConfiguration config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string connectionString = config.GetConnectionString("ConnectionString");
+
+            optionsBuilder
+                .UseSqlServer(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
