@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentManager.Backend.Entities;
 using StudentManager.Backend.Indentity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Fitness.Infrastracture
 {

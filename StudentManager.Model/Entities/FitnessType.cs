@@ -16,7 +16,7 @@ namespace StudentManager.Backend.Entities
         [ConcurrencyCheck]
         public string Name { get; set; }
         public string Description { get; set; }
-        public FitnessProgram FitnessProgram { get; set; }
+        public virtual FitnessProgram FitnessProgram { get; set; }
         public int FitnessProgramId { get; set; }
     }
 }

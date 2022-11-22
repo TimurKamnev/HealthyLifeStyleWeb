@@ -16,7 +16,7 @@ namespace StudentManager.Backend.Entities
         [Required]
         [MaxLength(500)]
         public string Description { get; set; }
-        public FitnessProgram FitnessProgram { get; set; }
+        public virtual FitnessProgram FitnessProgram { get; set; }
         public int FitnessProgramId { get; set; }
     }
 }

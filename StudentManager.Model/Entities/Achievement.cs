@@ -10,9 +10,9 @@ namespace StudentManager.Backend.Entities
     public class Achievement
     {
         public int Id { get; set; }
-        public Person Person { get; set; }
+        public virtual Person Person { get; set; }
         public int PersonId { get; set; }
-        public List<Training> Trainings { get; set; }
+        public virtual List<Training> Trainings { get; set; }
         [Required]
         public int? Period { get; set; }
     }

@@ -9,10 +9,10 @@ namespace StudentManager.Backend.Entities
     public class FitnessProgram
     {
         public int Id { get; set; }
-        public List<Training> Trainings { get; set; }
-        public List<FitnessTip> FitnessTips { get; set; }
-        public List<PersonFitnessProgram> PersonFitnessPrograms { get; set; }
-        public FitnessType FitnessType { get; set; }
+        public virtual List<Training> Trainings { get; set; }
+        public virtual List<FitnessTip> FitnessTips { get; set; }
+        public virtual List<PersonFitnessProgram> PersonFitnessPrograms { get; set; }
+        public virtual FitnessType FitnessType { get; set; }
         public int FitnessTypeId { get; set; }
     }
 }

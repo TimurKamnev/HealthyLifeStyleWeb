@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
@@ -19,30 +18,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using StudentManager.WebApp.Areas.Identity.Data;
-using StudentManager.WebApp.Controllers;
 
 namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<CreatedUser> _signInManager;
-        private readonly UserManager<CreatedUser> _userManager;
-        private readonly IUserStore<CreatedUser> _userStore;
-        private readonly IUserEmailStore<CreatedUser> _emailStore;
-        private readonly IShortedUserController _shortedUserController;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IUserStore<IdentityUser> _userStore;
+        private readonly IUserEmailStore<IdentityUser> _emailStore;
+        private readonly ILogger<RegisterModel> _logger;
+        private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<CreatedUser> userManager,
-            IUserStore<CreatedUser> userStore,
-            SignInManager<CreatedUser> signInManager,
-            IShortedUserController shortedUserController)
+            UserManager<IdentityUser> userManager,
+            IUserStore<IdentityUser> userStore,
+            SignInManager<IdentityUser> signInManager,
+            ILogger<RegisterModel> logger,
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
-            _shortedUserController = shortedUserController;
+            _logger = logger;
+            _emailSender = emailSender;
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _shortedUserController.AddUser(user);
+                    _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -130,6 +130,9 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
+
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -151,27 +154,27 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private CreatedUser CreateUser()
+        private IdentityUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<CreatedUser>();
+                return Activator.CreateInstance<IdentityUser>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(CreatedUser)}'. " +
-                    $"Ensure that '{nameof(CreatedUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
+                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        private IUserEmailStore<CreatedUser> GetEmailStore()
+        private IUserEmailStore<IdentityUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<CreatedUser>)_userStore;
+            return (IUserEmailStore<IdentityUser>)_userStore;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace StudentManager.Backend.Entities
         [Required]
         [Range(1, 50)]
         public int CountOfRepeats { get; set; }
-        public Training Training { get; set; }
+        public virtual Training Training { get; set; }
         public int TrainingId { get; set; }
         [Required]
         [RegularExpression(@"^((http|ftp|https|www)://)?([\w+?\.\w+])+([a-zA-Z0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?$")]

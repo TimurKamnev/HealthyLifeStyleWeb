@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using StudentManager.WebApp.Areas.Identity.Data;
 
-namespace StudentManager.WebApp.Areas.Identity.Data;
+namespace StudentManager.WebApp.Data;
 
-public class IdentityContext : IdentityDbContext<CreatedUser>
+public class StudentManagerWebAppContext : IdentityDbContext<IdentityUser>
 {
-    public IdentityContext(DbContextOptions<IdentityContext> options)
+    public StudentManagerWebAppContext(DbContextOptions<StudentManagerWebAppContext> options)
         : base(options)
     {
     }

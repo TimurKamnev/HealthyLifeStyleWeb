@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using StudentManager.WebApp.Areas.Identity.Data;
 using StudentManager.WebApp.Controllers;
-using StudentManager.WebApp.Areas;
 using Fitness.Infrastracture;
+using StudentManager.WebApp.Models;
+using StudentManager.WebApp.Data;
+using StudentManager.WebApp.Areas;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using StudentManager.WebApp.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
@@ -14,9 +17,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(ctx => ctx.UseLazyLoadingProxies());
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<IdentityContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddIdentity<CreatedUser, IdentityRole>()
-            .AddEntityFrameworkStores<IdentityContext>()
+            .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
 var app = builder.Build();

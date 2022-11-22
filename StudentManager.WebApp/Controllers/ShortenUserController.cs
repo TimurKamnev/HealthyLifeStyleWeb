@@ -1,5 +1,4 @@
 ﻿using Fitness.Infrastracture;
-using StudentManager.Backend.Entities;
 using StudentManager.Backend.Indentity;
 using StudentManager.WebApp.Areas;
 using StudentManager.WebApp.Areas.Identity.Data;

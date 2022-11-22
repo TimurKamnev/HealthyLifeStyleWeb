@@ -11,17 +11,16 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using StudentManager.WebApp.Areas.Identity.Data;
 
 namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel
     {
-        private readonly UserManager<CreatedUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _sender;
 
-        public RegisterConfirmationModel(UserManager<CreatedUser> userManager, IEmailSender sender)
+        public RegisterConfirmationModel(UserManager<IdentityUser> userManager, IEmailSender sender)
         {
             _userManager = userManager;
             _sender = sender;

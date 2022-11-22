@@ -13,10 +13,10 @@ namespace StudentManager.Backend.Entities
         [Required]
         [MaxLength(30)]
         public string Type { get; set; }
-        public List<Exercise> Exercises { get; set; }
+        public virtual List<Exercise> Exercises { get; set; }
         [Required]
         public int Duration { get; set; }
-        public FitnessProgram FitnessProgram { get; set; }
+        public virtual FitnessProgram FitnessProgram { get; set; }
         public int FitnessProgramId { get; set; }
     }
 }

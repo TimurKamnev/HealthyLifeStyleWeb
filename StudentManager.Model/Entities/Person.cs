@@ -23,10 +23,10 @@ namespace StudentManager.Backend.Entities
         public int Height { get; set; }
         [Required]
         public int Weight { get; set; }
-        public Gender Gender { get; set; }
-        public List<Achievement> Achievements { get; set; }
+        public virtual Gender Gender { get; set; }
+        public virtual List<Achievement> Achievements { get; set; }
         public bool IsAdmin { get; set; } = false;
-        public List<PersonFitnessProgram> PersonFitnessPrograms { get; set; }
+        public virtual List<PersonFitnessProgram> PersonFitnessPrograms { get; set; }
     }
     public enum Gender
     {
