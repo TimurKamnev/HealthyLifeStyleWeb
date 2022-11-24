@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Fitness.Infrastracture;
 using StudentManager.Backend.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentManager.WebApp.Controllers
 {
+
     public class FitnessProgramsController : Controller
     {
         private readonly AppDbContext _context;

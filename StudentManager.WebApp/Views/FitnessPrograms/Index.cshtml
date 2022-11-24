@@ -5,10 +5,12 @@
 }
 
 <h1>Index</h1>
-
-<p>
+@if(User.IsInRole(WC.Admin)){
+    <p>
     <a asp-action="Create">Create New</a>
 </p>
+}
+
 <table class="table">
     <thead>
         <tr>

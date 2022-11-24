@@ -128,11 +128,11 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, WC.Admin);
+                    
 
                     if (User.IsInRole(WC.Admin))
                     {
-                        
+                        await _userManager.AddToRoleAsync(user, WC.Admin);
                     }
                     else
                     {
