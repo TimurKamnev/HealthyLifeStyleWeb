@@ -29,18 +29,23 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
         private readonly IUserStore<CreatedUser> _userStore;
         private readonly IUserEmailStore<CreatedUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<CreatedUser> userManager,
             IUserStore<CreatedUser> userStore,
             SignInManager<CreatedUser> signInManager,
-            ILogger<RegisterModel> logger)
+            ILogger<RegisterModel> logger,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
+            _roleManager = roleManager;
+            _roleManager = roleManager;
+
         }
 
         /// <summary>
@@ -100,6 +105,11 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            if(!await _roleManager.RoleExistsAsync(WC.Admin))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(WC.Admin));
+                await _roleManager.CreateAsync(new IdentityRole(WC.User));
+            }
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -118,6 +128,16 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, WC.Admin);
+
+                    if (User.IsInRole(WC.Admin))
+                    {
+                        
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, WC.User);
+                    }
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
