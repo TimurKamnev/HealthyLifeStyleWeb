@@ -1,6 +1,7 @@
 ﻿using Fitness.Infrastracture;
 using StudentManager.Backend.Indentity;
 using StudentManager.WebApp.Areas;
+using StudentManager.WebApp.Areas.Identity;
 using StudentManager.WebApp.Areas.Identity.Data;
 
 namespace StudentManager.WebApp.Controllers

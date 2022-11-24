@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using StudentManager.WebApp.Controllers;
 using Fitness.Infrastracture;
 using StudentManager.WebApp.Models;
-using StudentManager.WebApp.Data;
 using StudentManager.WebApp.Areas;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using StudentManager.WebApp.Areas.Identity.Data;
@@ -15,11 +14,11 @@ var connectionString = builder.Configuration.GetConnectionString("IdentityContex
 builder.Services.AddTransient<IShortedUserController, ShortenUserController>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(ctx => ctx.UseLazyLoadingProxies());
+builder.Services.AddDbContext<IdentityContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddIdentity<CreatedUser, IdentityRole>()
-            .AddEntityFrameworkStores<AppDbContext>()
+            .AddEntityFrameworkStores<IdentityContext>()
             .AddDefaultTokenProviders();
 
 var app = builder.Build();
@@ -31,8 +30,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

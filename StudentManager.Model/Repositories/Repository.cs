@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Fitness.Infrastracture
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepositories<T> where T : class
     {
         private AppDbContext _context = null;
         private DbSet<T> table = null;

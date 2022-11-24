@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StudentManager.WebApp.Areas.Identity.Data;
 
-namespace StudentManager.WebApp.Data;
+namespace StudentManager.WebApp.Areas.Identity.Data;
 
 public class IdentityContext : IdentityDbContext<CreatedUser>
 {

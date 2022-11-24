@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace StudentManager.Backend.Entities
 {
-    public interface IRepository<T> where T : class
+    public interface IRepositories<T> where T : class
     {
         IEnumerable<T> GetAll();
         T GetById(object id);

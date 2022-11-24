@@ -26,9 +26,6 @@ namespace Fitness.Infrastracture
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=localhost;DataBase=HealthyLifeStyleDb;Trusted_Connection=True;MultipleActiveResultSets=True");
-
             IConfiguration config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();

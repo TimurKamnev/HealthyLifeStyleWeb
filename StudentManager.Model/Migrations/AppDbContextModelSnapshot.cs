@@ -17,7 +17,7 @@ namespace StudentManager.Backend.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -41,7 +41,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Achievement", (string)null);
+                    b.ToTable("Achievement");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Exercise", b =>
@@ -71,7 +71,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasIndex("TrainingId");
 
-                    b.ToTable("Exercise", (string)null);
+                    b.ToTable("Exercise");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.FitnessProgram", b =>
@@ -90,7 +90,7 @@ namespace StudentManager.Backend.Migrations
                     b.HasIndex("FitnessTypeId")
                         .IsUnique();
 
-                    b.ToTable("FitnessProgram", (string)null);
+                    b.ToTable("FitnessProgram");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.FitnessTip", b =>
@@ -118,7 +118,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasIndex("FitnessProgramId");
 
-                    b.ToTable("FitnessTip", (string)null);
+                    b.ToTable("FitnessTip");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.FitnessType", b =>
@@ -149,7 +149,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasKey("FitnessProgramId");
 
-                    b.ToTable("FitnessType", (string)null);
+                    b.ToTable("FitnessType");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.LogModel", b =>
@@ -179,7 +179,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Logs", (string)null);
+                    b.ToTable("Logs");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Person", b =>
@@ -259,7 +259,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Person", (string)null);
+                    b.ToTable("Person");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.PersonFitnessProgram", b =>
@@ -285,7 +285,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("PersonFitnessProgram", (string)null);
+                    b.ToTable("PersonFitnessProgram");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Training", b =>
@@ -316,7 +316,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasIndex("FitnessProgramId");
 
-                    b.ToTable("Training", (string)null);
+                    b.ToTable("Training");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Indentity.ShortenUser", b =>
@@ -330,7 +330,7 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Achievement", b =>
