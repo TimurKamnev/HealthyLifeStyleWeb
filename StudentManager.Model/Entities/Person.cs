@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace StudentManager.Backend.Entities
 {
-    public class Person : IdentityUser
+    public class Person 
     {
         public int Id { get; set; }
+        public string PersonId { get; set; }
         [Required]
         [MaxLength(20)]
         public string FirstName { get; set; }

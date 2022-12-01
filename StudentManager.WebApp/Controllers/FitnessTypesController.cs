@@ -54,7 +54,7 @@ namespace StudentManager.WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Timestamp,Name,Description,FitnessProgramId")] FitnessType fitnessType)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,FitnessProgramId")] FitnessType fitnessType)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace StudentManager.WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Timestamp,Name,Description,FitnessProgramId")] FitnessType fitnessType)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,FitnessProgramId")] FitnessType fitnessType)
         {
             if (id != fitnessType.FitnessProgramId)
             {

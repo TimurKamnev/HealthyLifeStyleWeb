@@ -10,9 +10,6 @@ namespace StudentManager.Backend.Entities
     public class FitnessType
     {
         public int Id { get; set; }
-        [Timestamp]
-        public byte[] Timestamp { get; set; }
-
         [ConcurrencyCheck]
         public string Name { get; set; }
         public string Description { get; set; }

@@ -20,6 +20,6 @@ namespace StudentManager.Backend.Entities
         public int TrainingId { get; set; }
         [Required]
         [RegularExpression(@"^((http|ftp|https|www)://)?([\w+?\.\w+])+([a-zA-Z0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?$")]
-        public string VideoUrl { get; set; }
+        public string Video { get; set; }
     }
 }

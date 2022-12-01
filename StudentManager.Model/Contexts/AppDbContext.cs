@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using StudentManager.Backend.Entities;
-using StudentManager.Backend.Indentity;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace Fitness.Infrastracture
 {
@@ -20,7 +19,6 @@ namespace Fitness.Infrastracture
         public virtual DbSet<PersonFitnessProgram> PersonFitnessProgram { get; set; }
         public virtual DbSet<Achievement> Achievement { get; set; }
         public virtual DbSet<FitnessType> FitnessType { get; set; }
-        public DbSet<ShortenUser> Users { get; set; }
         public DbSet<LogModel> Logs { get; set; }
 
 

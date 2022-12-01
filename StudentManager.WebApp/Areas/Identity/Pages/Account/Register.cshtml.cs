@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using StudentManager.Backend.Entities;
 using StudentManager.WebApp.Areas.Identity.Data;
 
 namespace StudentManager.WebApp.Areas.Identity.Pages.Account
@@ -30,13 +31,15 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<CreatedUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IShortedUserController _shortedUserController;
 
         public RegisterModel(
             UserManager<CreatedUser> userManager,
             IUserStore<CreatedUser> userStore,
             SignInManager<CreatedUser> signInManager,
             ILogger<RegisterModel> logger,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            IShortedUserController shortedUserController)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -45,7 +48,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
             _logger = logger;
             _roleManager = roleManager;
             _roleManager = roleManager;
-
+            _shortedUserController = shortedUserController;
         }
 
         /// <summary>
@@ -73,6 +76,31 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
+            [StringLength(255, ErrorMessage = "The first name field should have a maximum of 255 characters")]
+            [Display(Name = "Firstname")]
+            public string FirstName { get; set; }
+            //
+            [Required]
+            [StringLength(255, ErrorMessage = "The last name field should have a maximum of 255 characters")]
+            [Display(Name = "Lastname")]
+            public string LastName { get; set; }
+            //
+            [Required]
+            [Display(Name = "Weight")]
+            public double Weight { get; set; }
+            //
+            [Required]
+            [Display(Name = "Height")]
+            public double Height { get; set; }
+            //
+            [Required]
+            [Display(Name = "DateTime")]
+            public DateTime DateTime { get; set; }
+            //
+            [Required]
+            [Display(Name = "Gender")]
+            public Gender Gender { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -128,7 +156,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    
+                    //_shortedUserController.AddUser(user, Input.Weight, Input.Height, Input.FirstName, Input.LastName, Input.DateTime, Input.Gender);
 
                     if (User.IsInRole(WC.Admin))
                     {

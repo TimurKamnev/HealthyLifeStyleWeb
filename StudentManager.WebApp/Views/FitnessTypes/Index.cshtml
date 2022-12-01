@@ -5,20 +5,15 @@
 }
 
 <h1>Index</h1>
-@if (User.IsInRole(WC.Admin))
-{
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Timestamp)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -34,9 +29,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Timestamp)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

@@ -12,14 +12,14 @@ using StudentManager.WebApp.Areas.Identity.Data;
 namespace StudentManager.WebApp.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20221124095745_init")]
+    [Migration("20221201122852_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);

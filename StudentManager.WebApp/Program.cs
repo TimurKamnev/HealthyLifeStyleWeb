@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
 
 // Add services to the container.
-builder.Services.AddTransient<IShortedUserController, ShortenUserController>();
+builder.Services.AddTransient<IShortedUserController, PersonUserController>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(ctx => ctx.UseLazyLoadingProxies());
 builder.Services.AddDbContext<IdentityContext>(options => options.UseSqlServer(connectionString));
