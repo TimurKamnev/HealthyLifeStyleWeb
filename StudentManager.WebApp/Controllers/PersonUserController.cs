@@ -15,7 +15,7 @@ namespace StudentManager.WebApp.Controllers
             _dbContext = dbContext;
         }
 
-        public void AddUser(Person user, double weight, double height, string firstName, string lastName,DateTime dateTime, Gender gender)
+        public void AddUser(CreatedUser user, double weight, double height, string firstName, string lastName,DateTime dateTime, Gender gender)
         {
             var shortenUser = MapUser(user);
             ExpandUserObject(shortenUser, weight, height, firstName, lastName, dateTime, gender);
@@ -26,20 +26,20 @@ namespace StudentManager.WebApp.Controllers
 
         private void ExpandUserObject(Person user, double weight, double height, string firstName, string lastName,DateTime dateTime,Gender gender)
         {
-            throw new NotImplementedException();
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Gender = gender;
+            user.Weight = weight;
+            user.Height = height;
+            user.BirthdayDate = dateTime;
         }
 
-        private Person MapUser(Person mozgoeb)
+        private Person MapUser(CreatedUser mozgoeb)
         {
             return new Person()
             {
                 Id = mozgoeb.Id,
-                FirstName = mozgoeb.FirstName,
-                LastName = mozgoeb.LastName,
-                Weight = mozgoeb.Weight,
-                Height = mozgoeb.Height,
-                BirthdayDate = mozgoeb.BirthdayDate,
-                Gender = mozgoeb.Gender
+                
             };
         }
     }

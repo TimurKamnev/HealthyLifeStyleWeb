@@ -156,7 +156,7 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    //_shortedUserController.AddUser(user, Input.Weight, Input.Height, Input.FirstName, Input.LastName, Input.DateTime, Input.Gender);
+                    _shortedUserController.AddUser(user, Input.Weight, Input.Height, Input.FirstName, Input.LastName, Input.DateTime, Input.Gender);
 
                     if (User.IsInRole(WC.Admin))
                     {

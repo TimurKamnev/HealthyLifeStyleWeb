@@ -45,14 +45,12 @@ namespace StudentManager.Backend.Migrations
                 name: "Person",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PersonId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     BirthdayDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Height = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<int>(type: "int", nullable: false),
+                    Height = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     IsAdmin = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -86,7 +84,7 @@ namespace StudentManager.Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PersonId = table.Column<int>(type: "int", nullable: false),
+                    PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Period = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -126,7 +124,7 @@ namespace StudentManager.Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PersonId = table.Column<int>(type: "int", nullable: false),
+                    PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FitnessProgramId = table.Column<int>(type: "int", nullable: false),
                     IsCurrent = table.Column<bool>(type: "bit", nullable: false)
                 },

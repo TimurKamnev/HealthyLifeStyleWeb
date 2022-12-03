@@ -10,7 +10,7 @@ namespace StudentManager.Backend.Entities
     {
         public int Id { get; set; }
         public virtual Person Person { get; set; }
-        public int PersonId { get; set; }
+        public string PersonId { get; set; }
         public virtual FitnessProgram FitnessProgram { get; set; }
         public int FitnessProgramId { get; set; }
 

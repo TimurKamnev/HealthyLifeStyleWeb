@@ -1,17 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace StudentManager.Backend.Entities
 {
     public class Person 
     {
-        public int Id { get; set; }
-        public string PersonId { get; set; }
+        public string Id { get; set; }
         [Required]
         [MaxLength(20)]
         public string FirstName { get; set; }
@@ -21,9 +14,9 @@ namespace StudentManager.Backend.Entities
         [Required]
         public DateTime BirthdayDate { get; set; }
         [Required]
-        public int Height { get; set; }
+        public double Height { get; set; }
         [Required]
-        public int Weight { get; set; }
+        public double Weight { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual List<Achievement> Achievements { get; set; }
         public bool IsAdmin { get; set; } = false;

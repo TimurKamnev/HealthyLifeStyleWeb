@@ -11,7 +11,7 @@ namespace StudentManager.Backend.Entities
     {
         public int Id { get; set; }
         public virtual Person Person { get; set; }
-        public int PersonId { get; set; }
+        public string PersonId { get; set; }
         public virtual List<Training> Trainings { get; set; }
         [Required]
         public int? Period { get; set; }
