@@ -22,29 +22,6 @@ namespace StudentManager.Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("StudentManager.Backend.Entities.Achievement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("Period")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("PersonId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("Achievement");
-                });
-
             modelBuilder.Entity("StudentManager.Backend.Entities.Exercise", b =>
                 {
                     b.Property<int>("Id")
@@ -247,9 +224,6 @@ namespace StudentManager.Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("AchievementId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
@@ -263,22 +237,9 @@ namespace StudentManager.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AchievementId");
-
                     b.HasIndex("FitnessProgramId");
 
                     b.ToTable("Training");
-                });
-
-            modelBuilder.Entity("StudentManager.Backend.Entities.Achievement", b =>
-                {
-                    b.HasOne("StudentManager.Backend.Entities.Person", "Person")
-                        .WithMany("Achievements")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Exercise", b =>
@@ -335,10 +296,6 @@ namespace StudentManager.Backend.Migrations
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Training", b =>
                 {
-                    b.HasOne("StudentManager.Backend.Entities.Achievement", null)
-                        .WithMany("Trainings")
-                        .HasForeignKey("AchievementId");
-
                     b.HasOne("StudentManager.Backend.Entities.FitnessProgram", "FitnessProgram")
                         .WithMany("Trainings")
                         .HasForeignKey("FitnessProgramId")
@@ -346,11 +303,6 @@ namespace StudentManager.Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("FitnessProgram");
-                });
-
-            modelBuilder.Entity("StudentManager.Backend.Entities.Achievement", b =>
-                {
-                    b.Navigation("Trainings");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.FitnessProgram", b =>
@@ -370,8 +322,6 @@ namespace StudentManager.Backend.Migrations
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Person", b =>
                 {
-                    b.Navigation("Achievements");
-
                     b.Navigation("PersonFitnessPrograms");
                 });
 

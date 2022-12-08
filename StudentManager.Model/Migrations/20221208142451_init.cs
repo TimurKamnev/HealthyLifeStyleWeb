@@ -79,26 +79,6 @@ namespace StudentManager.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Achievement",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Period = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Achievement", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Achievement_Person_PersonId",
-                        column: x => x.PersonId,
-                        principalTable: "Person",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "FitnessTip",
                 columns: table => new
                 {
@@ -153,17 +133,11 @@ namespace StudentManager.Backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
-                    FitnessProgramId = table.Column<int>(type: "int", nullable: false),
-                    AchievementId = table.Column<int>(type: "int", nullable: true)
+                    FitnessProgramId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Training", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Training_Achievement_AchievementId",
-                        column: x => x.AchievementId,
-                        principalTable: "Achievement",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Training_FitnessProgram_FitnessProgramId",
                         column: x => x.FitnessProgramId,
@@ -195,11 +169,6 @@ namespace StudentManager.Backend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Achievement_PersonId",
-                table: "Achievement",
-                column: "PersonId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Exercise_TrainingId",
                 table: "Exercise",
                 column: "TrainingId");
@@ -226,11 +195,6 @@ namespace StudentManager.Backend.Migrations
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Training_AchievementId",
-                table: "Training",
-                column: "AchievementId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Training_FitnessProgramId",
                 table: "Training",
                 column: "FitnessProgramId");
@@ -254,13 +218,10 @@ namespace StudentManager.Backend.Migrations
                 name: "Training");
 
             migrationBuilder.DropTable(
-                name: "Achievement");
+                name: "Person");
 
             migrationBuilder.DropTable(
                 name: "FitnessProgram");
-
-            migrationBuilder.DropTable(
-                name: "Person");
 
             migrationBuilder.DropTable(
                 name: "FitnessType");

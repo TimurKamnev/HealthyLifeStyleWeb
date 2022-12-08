@@ -17,7 +17,6 @@ namespace Fitness.Infrastracture
         public virtual DbSet<FitnessTip> FitnessTip { get; set; }
         public virtual DbSet<Training> Training { get; set; }
         public virtual DbSet<PersonFitnessProgram> PersonFitnessProgram { get; set; }
-        public virtual DbSet<Achievement> Achievement { get; set; }
         public virtual DbSet<FitnessType> FitnessType { get; set; }
         public DbSet<LogModel> Logs { get; set; }
 
@@ -48,10 +47,6 @@ namespace Fitness.Infrastracture
                 .HasForeignKey(x => x.FitnessProgramId);
 
             //many-to-one
-            modelBuilder.Entity<Person>()
-                .HasMany(x => x.Achievements)
-                .WithOne(x => x.Person)
-                .HasForeignKey(x => x.PersonId);
             modelBuilder.Entity<Training>()
                 .HasMany(x => x.Exercises)
                 .WithOne(x => x.Training)

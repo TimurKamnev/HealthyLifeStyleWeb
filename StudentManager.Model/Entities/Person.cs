@@ -18,7 +18,6 @@ namespace StudentManager.Backend.Entities
         [Required]
         public double Weight { get; set; }
         public virtual Gender Gender { get; set; }
-        public virtual List<Achievement> Achievements { get; set; }
         public bool IsAdmin { get; set; } = false;
         public virtual List<PersonFitnessProgram> PersonFitnessPrograms { get; set; }
     }
