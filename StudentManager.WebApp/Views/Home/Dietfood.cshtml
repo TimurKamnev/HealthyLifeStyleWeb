@@ -1,6 +1,416 @@
-﻿namespace StudentManager.WebApp.Views
-{
-    public class Dietfood
-    {
-    }
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
 }
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Meals & Deals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <style>
+    .food__block {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 10px;
+      row-gap: 10px;
+      padding-left: 30px;
+    }
+
+    .card-content p:last-child {
+      font-weight: bold;
+    }
+
+    /* .input-field input[type=search]+.label-icon {
+      left: 0;
+      transform: translateY(50%);
+    } */
+
+    .row {
+      margin-bottom: 0;
+    }
+
+    .card .card-image img {
+      object-fit: cover;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+
+      box-sizing: border-box;
+
+      font-family: 'Poppins', sans-serif;
+
+    }
+
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    main {
+      height: 100vh;
+      width: 100vw;
+
+    }
+
+    main section {
+      width: 100%;
+    }
+
+    .content {
+      margin-top: 7vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      padding-bottom: 50px;
+    }
+
+    .form-group {
+      margin-top: 1vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      margin-bottom: 3.5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      background: #eeeeee;
+      width: 40vw;
+      height: 30px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 15px;
+      padding: 0 15px;
+      outline: none;
+      transition: border-color 0.2s ease-in;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #ffab40;
+    }
+
+    .form-group:last-child {
+      margin-top: 32px;
+    }
+
+    .result-container {
+      margin-left: 1vh;
+    }
+
+    .result-container h2 {
+      font-weight: 500;
+      font-size: 16px;
+      margin-top: 0;
+    }
+
+    .result-content {
+      margin-top: 10px;
+      background: #eeeeee;
+      border-radius: 5px;
+      padding: 15px;
+    }
+
+    .result-content ul {
+      list-style: none;
+    }
+
+    .result-content ul li {
+      font-size: 15px;
+      color: rgba(0, 0, 0, 0.7);
+      font-weight: bold;
+      line-height: 22px;
+    }
+
+    .result-content ul li strong {
+      color: #ffab40;
+    }
+  </style>
+  <main>
+    <div class="container">
+      <section>
+        <div class="content">
+          <form id="form">
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" required />
+            </div>
+            <div class="form-group">
+              <label for="weight">Weight</label>
+              <input type="number" id="weight" required />
+            </div>
+            <div class="form-group">
+              <label for="height">Height</label>
+              <input type="number" id="height" required />
+            </div>
+            <div class="form-group">
+              <label for="activity_level">Physical activity level</label>
+              <select id="activity_level">
+                <option value="1.2">Sedentary</option>
+                <option value="1.375">Little activity</option>
+                <option value="1.55">Moderate activity</option>
+                <option value="1.725">Intense activity</option>
+                <option value="1.9">Very intense activity</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <button class="waves-effect waves-light btn" type="submit">Calculate!</button>
+            </div>
+          </form>
+          <div class="result-container" id="result">
+
+          </div>
+        </div>
+      </section>
+      <div class="row" style="padding-bottom: 30px;">
+
+        <div class="col s12 m4 l3">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field">
+                  <i>Food name</i>
+                  <input id="search" type="search" required>
+                  <!-- <label class="label-icon" for="search" id="find-food"><i class="material-icons">search</i></label> -->
+                  <!-- <i class="material-icons">close</i> -->
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <select class="dietType">
+                <option value="">Choose your option</option>
+                <option value="omnivore">Omnivore (Everything)</option>
+                <option value="pescetarian">Pescetarian</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="fruitarian">Fruitarian</option>
+                <option value="paleo">Paleo</option>
+              </select>
+              <label>Diet Type</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field">
+              <select class="foodIntolerances" multiple>
+                <option value="" disabled>Choose your option</option>
+                <option value="dairy">Dairy</option>
+                <option value="egg">Egg</option>
+                <option value="gluten">Gluten</option>
+                <option value="grain">Grain</option>
+                <option value="peanut">Peanut</option>
+                <option value="seafood">Seafood</option>
+                <option value="sesame">Sesame</option>
+                <option value="shellfish">Shellfish</option>
+                <option value="soy">Soy</option>
+                <option value="sulfite">Sulfite</option>
+                <option value="tree nut">Tree Nut</option>
+                <option value="wheat">Wheat</option>
+              </select>
+              <label>Food Intolerances</label>
+            </div>
+          </div>
+          <a class="waves-effect waves-light btn" id="findFoodBtn" style="margin-top: 24px; transform: translateX(-11.25px);">Find Me Food!</a>
+        </div>
+
+        <div class="col s12 m8 l9">
+          <div class="row food__block" id="found-recipes">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    $(document).ready(function () {
+      $('.sidenav').sidenav();
+      $('select').formSelect();
+      let jtbAPIKey = "32a0f22920f34f979a46071e4364527e";
+
+      $("#findFoodBtn").on("click", function (event) {
+        event.preventDefault();
+
+
+        let q = $("#search").val();
+        let selectedDietType = $(".dietType").val();
+        let selectedIntolerances = [];
+        $(".foodIntolerances :selected").each(function () {
+          selectedIntolerances.push($(this).val());
+        });
+        let intolString = selectedIntolerances.join(", ");
+
+        let foodFind = "https://api.spoonacular.com/recipes/search?query=" + q + "&apiKey=" + jtbAPIKey + "&number=6&diet=" + selectedDietType + "&intolerances=" + intolString;
+
+        $.ajax({
+          url: foodFind,
+          method: "GET"
+        }).then(function (response) {
+
+          console.log(response);
+          for (let i = 0; i < 6; i++) {
+            var col = $("<div>").addClass("col").attr("id", "recipe" + i);
+            var card = $("<div>").addClass("card");
+            var cardImageDiv = $("<div>").addClass("card-image");
+            var cardImage = $("<img>").attr("src", response.baseUri + response.results[i].image);
+            var cardName = $("<p>").text(response.results[i].title);
+            var aBtn = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light red saveBtn");
+            var plusIcon = $("<i>").addClass("material-icons").text("add");
+            var cardContent = $("<div>").addClass("card-content");
+            var cardP = $("<p>").text("Ready In: " + response.results[i].readyInMinutes + " minutes.");
+            var cardPrice = $("<p>").attr("id", "price" + i);
+            var cardAction = $("<div>").addClass("card-action");
+            var cardLink = $("<a>").attr("id", "recipeSource" + i).attr("target", "_blank");
+
+            // aBtn.append(plusIcon);
+            cardImageDiv.append(cardImage.css({
+              "width": "100%",
+              "height": "200px"
+            }));
+            // cardImageDiv.append(aBtn);
+            cardContent.append(cardName);
+            cardContent.append(cardP);
+            cardAction.append(cardLink.text("Get the Recipe!"));
+            card.append(cardImageDiv);
+            card.append(cardContent);
+            card.append(cardAction);
+            col.append(card);
+            $("#found-recipes").prepend(col);
+
+            let id = response.results[i].id;
+            let foodId = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=" +
+              jtbAPIKey;
+
+            $.ajax({
+              url: foodId,
+              method: "GET"
+            }).then(function (response) {
+
+              console.log(response);
+              $("#recipeSource" + i).attr("href", response.sourceUrl);
+              $("#price" + i).text("Price per Serving: $" + response.pricePerServing / 100);
+            });
+
+          }
+        });
+
+
+      });
+
+      $("#gRamsay").on("click", function (event) {
+        event.preventDefault();
+        var giphyURL = "https://api.giphy.com/v1/gifs/search?q=gordonramsay&api_key=dc6zaTOxFJmzC&limit=1";
+        $.ajax({
+          url: giphyURL,
+          method: "GET",
+        }).then(function (response) {
+          console.log(response);
+          var results = response.data;
+          for (var i = 0; i < results.length; i++) {
+            var gifImage = $("<img>").css({
+              "width": "200px",
+              "height": "200px"
+            });
+            $(gifImage).attr("src", results[i].images.fixed_height.url);
+            $("#img-div").append(gifImage);
+          }
+        });
+      });
+    });
+
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', handleSubmit);
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const gender = getSelectedValue('gender');
+      const age = getInputNumberValue('age');
+      const weight = getInputNumberValue('weight');
+      const height = getInputNumberValue('height');
+      const activityLevel = getSelectedValue('activity_level');
+
+      const tmb = Math.round(
+        gender === 'female'
+          ? (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age))
+          : (66 + (13.7 * weight) + (5 * height) - (6.8 * age))
+      );
+      const maintenance = Math.round(tmb * Number(activityLevel));
+      const loseWeight = maintenance - 450;
+      const gainWeight = maintenance + 450;
+
+      const layout = `
+        <h2>Here is the result:</h2>
+        <div class="result-content">
+        <ul>
+            <li>
+            Your metabolism is <strong>${tmb} calories</strong>.
+            </li>
+            <li>
+            To maintain your weight you need to consume an average of <strong>${maintenance} calories</strong>.
+            </li>
+            <li>
+            To lose weight you need to consume on average <strong>${loseWeight} calories</strong>.
+            </li>
+            <li>
+            To gain weight you need to consume an average of <strong>${gainWeight} calories</strong>.
+            </li>
+        </ul>
+        </div>
+    `;
+
+      const result = document.getElementById('result');
+
+      result.innerHTML = layout;
+    }
+
+    function getSelectedValue(id) {
+      const select = document.getElementById(id);
+      return select.options[select.selectedIndex].value;
+    }
+
+    function getInputNumberValue(id) {
+      return Number(document.getElementById(id).value);
+    }
+  </script>
+</body>
+
+</html>

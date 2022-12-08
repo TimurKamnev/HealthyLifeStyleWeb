@@ -12,7 +12,7 @@ using StudentManager.WebApp.Areas.Identity.Data;
 namespace StudentManager.WebApp.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20221208142532_init")]
+    [Migration("20221208151855_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
