@@ -115,7 +115,7 @@ namespace StudentManager.WebApp.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (id == personFitnessProgram.Id)
             {
                 try
                 {

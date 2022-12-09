@@ -57,9 +57,9 @@ namespace StudentManager.WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CountOfRepeats,TrainingId,Video")] Exercise exercise)
+        public async Task<IActionResult> Create([Bind("Name,CountOfRepeats,TrainingId,Video")] Exercise exercise)
         {
-            if (ModelState.IsValid)
+            if (exercise.Id == 0)
             {
                 _context.Add(exercise);
                 await _context.SaveChangesAsync();
@@ -98,7 +98,7 @@ namespace StudentManager.WebApp.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (id == exercise.Id)
             {
                 try
                 {

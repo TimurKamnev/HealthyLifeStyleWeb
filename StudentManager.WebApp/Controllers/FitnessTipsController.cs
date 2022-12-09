@@ -57,9 +57,9 @@ namespace StudentManager.WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,FitnessProgramId")] FitnessTip fitnessTip)
+        public async Task<IActionResult> Create([Bind("Name,Description,FitnessProgramId")] FitnessTip fitnessTip)
         {
-            if (ModelState.IsValid)
+            if (fitnessTip.Id == 0)
             {
                 _context.Add(fitnessTip);
                 await _context.SaveChangesAsync();
@@ -98,7 +98,7 @@ namespace StudentManager.WebApp.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (id == fitnessTip.Id)
             {
                 try
                 {
