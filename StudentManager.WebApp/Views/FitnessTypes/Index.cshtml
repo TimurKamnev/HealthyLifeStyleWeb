@@ -6,17 +6,19 @@
 
 <h1>Index</h1>
 
-<p>
+@if(User.IsInRole(WC.Admin)){
+    <p>
     <a asp-action="Create">Create New</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(model => model.Id) 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Name) 
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -31,7 +33,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Name) <img class="fitness-icons" src="~/lib/images/muscle.png">
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
