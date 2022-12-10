@@ -1,22 +1,23 @@
 ﻿@model IEnumerable<StudentManager.Backend.Entities.FitnessType>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Fitness-Programm";
 }
 
-<h1>Index</h1>
+<h1>Fitness-Programm</h1>
 
 @if(User.IsInRole(WC.Admin)){
     <p>
     <a asp-action="Create">Create New</a>
 </p>
 }
+
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Id) 
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Name) 
             </th>
@@ -29,9 +30,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name) <img class="fitness-icons" src="~/lib/images/muscle.png">
             </td>

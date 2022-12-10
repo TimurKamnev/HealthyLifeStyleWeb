@@ -4,11 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Choose-Programm</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole(WC.Admin))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -16,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.Person)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FitnessProgram)
+                @Html.DisplayNameFor(model => model.FitnessType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsCurrent)
@@ -31,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.Person.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FitnessProgram.Id)
+                @Html.DisplayFor(modelItem => item.FitnessType.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsCurrent)

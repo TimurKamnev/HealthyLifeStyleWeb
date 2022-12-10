@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace StudentManager.Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221208151827_init")]
+    [Migration("20221210140809_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -199,7 +199,10 @@ namespace StudentManager.Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("FitnessProgramId")
+                    b.Property<int?>("FitnessProgramId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FitnessTypeId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsCurrent")
@@ -212,6 +215,8 @@ namespace StudentManager.Backend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FitnessProgramId");
+
+                    b.HasIndex("FitnessTypeId");
 
                     b.HasIndex("PersonId");
 
@@ -279,9 +284,13 @@ namespace StudentManager.Backend.Migrations
 
             modelBuilder.Entity("StudentManager.Backend.Entities.PersonFitnessProgram", b =>
                 {
-                    b.HasOne("StudentManager.Backend.Entities.FitnessProgram", "FitnessProgram")
+                    b.HasOne("StudentManager.Backend.Entities.FitnessProgram", null)
                         .WithMany("PersonFitnessPrograms")
-                        .HasForeignKey("FitnessProgramId")
+                        .HasForeignKey("FitnessProgramId");
+
+                    b.HasOne("StudentManager.Backend.Entities.FitnessType", "FitnessType")
+                        .WithMany("PersonFitnessPrograms")
+                        .HasForeignKey("FitnessTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -291,7 +300,7 @@ namespace StudentManager.Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("FitnessProgram");
+                    b.Navigation("FitnessType");
 
                     b.Navigation("Person");
                 });
@@ -320,6 +329,8 @@ namespace StudentManager.Backend.Migrations
                 {
                     b.Navigation("FitnessProgram")
                         .IsRequired();
+
+                    b.Navigation("PersonFitnessPrograms");
                 });
 
             modelBuilder.Entity("StudentManager.Backend.Entities.Person", b =>

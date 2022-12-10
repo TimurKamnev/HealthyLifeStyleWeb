@@ -42,9 +42,9 @@ namespace Fitness.Infrastracture
                 .WithMany(x => x.PersonFitnessPrograms)
                 .HasForeignKey(x => x.PersonId);
             modelBuilder.Entity<PersonFitnessProgram>()
-                .HasOne(x => x.FitnessProgram)
+                .HasOne(x => x.FitnessType)
                 .WithMany(x => x.PersonFitnessPrograms)
-                .HasForeignKey(x => x.FitnessProgramId);
+                .HasForeignKey(x => x.FitnessTypeId);
 
             //many-to-one
             modelBuilder.Entity<Training>()

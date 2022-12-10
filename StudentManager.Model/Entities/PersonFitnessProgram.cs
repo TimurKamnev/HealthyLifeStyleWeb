@@ -11,9 +11,8 @@ namespace StudentManager.Backend.Entities
         public int Id { get; set; }
         public virtual Person Person { get; set; }
         public string PersonId { get; set; }
-        public virtual FitnessProgram FitnessProgram { get; set; }
-        public int FitnessProgramId { get; set; }
-
+        public virtual FitnessType FitnessType { get; set; }
+        public int FitnessTypeId { get; set; }
         public bool IsCurrent { get; set; }
     }
 }

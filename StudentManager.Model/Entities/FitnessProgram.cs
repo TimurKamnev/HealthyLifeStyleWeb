@@ -11,7 +11,6 @@ namespace StudentManager.Backend.Entities
         public int Id { get; set; }
         public virtual List<Training> Trainings { get; set; }
         public virtual List<FitnessTip> FitnessTips { get; set; }
-        public virtual List<PersonFitnessProgram> PersonFitnessPrograms { get; set; }
         public virtual FitnessType FitnessType { get; set; }
         public int FitnessTypeId { get; set; }
     }

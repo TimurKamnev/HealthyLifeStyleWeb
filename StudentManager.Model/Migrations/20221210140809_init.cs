@@ -105,8 +105,9 @@ namespace StudentManager.Backend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FitnessProgramId = table.Column<int>(type: "int", nullable: false),
-                    IsCurrent = table.Column<bool>(type: "bit", nullable: false)
+                    FitnessTypeId = table.Column<int>(type: "int", nullable: false),
+                    IsCurrent = table.Column<bool>(type: "bit", nullable: false),
+                    FitnessProgramId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,7 +116,12 @@ namespace StudentManager.Backend.Migrations
                         name: "FK_PersonFitnessProgram_FitnessProgram_FitnessProgramId",
                         column: x => x.FitnessProgramId,
                         principalTable: "FitnessProgram",
-                        principalColumn: "Id",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_PersonFitnessProgram_FitnessType_FitnessTypeId",
+                        column: x => x.FitnessTypeId,
+                        principalTable: "FitnessType",
+                        principalColumn: "FitnessProgramId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PersonFitnessProgram_Person_PersonId",
@@ -188,6 +194,11 @@ namespace StudentManager.Backend.Migrations
                 name: "IX_PersonFitnessProgram_FitnessProgramId",
                 table: "PersonFitnessProgram",
                 column: "FitnessProgramId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersonFitnessProgram_FitnessTypeId",
+                table: "PersonFitnessProgram",
+                column: "FitnessTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonFitnessProgram_PersonId",

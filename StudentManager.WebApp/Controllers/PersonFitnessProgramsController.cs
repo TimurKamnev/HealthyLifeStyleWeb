@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Fitness.Infrastracture;
 using StudentManager.Backend.Entities;
+using Microsoft.VisualStudio.Web.CodeGeneration.Design;
 using System.Security.Claims;
 
 namespace StudentManager.WebApp.Controllers
@@ -32,7 +33,7 @@ namespace StudentManager.WebApp.Controllers
 
             var appDbContext = _context
                 .PersonFitnessProgram
-                .Include(p => p.FitnessProgram)
+                .Include(p => p.FitnessType)
                 .Include(p => p.Person)
                 .Where(p => p.Person.Id == userId).ToList();
 
@@ -48,7 +49,7 @@ namespace StudentManager.WebApp.Controllers
             }
 
             var personFitnessProgram = await _context.PersonFitnessProgram
-                .Include(p => p.FitnessProgram)
+                .Include(p => p.FitnessType)
                 .Include(p => p.Person)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (personFitnessProgram == null)
@@ -62,7 +63,7 @@ namespace StudentManager.WebApp.Controllers
         // GET: PersonFitnessPrograms/Create
         public IActionResult Create()
         {
-            ViewData["FitnessProgramId"] = new SelectList(_context.FitnessProgram, "Id", "Id");
+            ViewData["FitnessTypeId"] = new SelectList(_context.FitnessType, "FitnessProgramId", "Name");
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FirstName");
             return View();
         }
@@ -72,17 +73,17 @@ namespace StudentManager.WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonId,FitnessProgramId,IsCurrent")] PersonFitnessProgram program)
+        public async Task<IActionResult> Create([Bind("PersonId,FitnessTypeId,IsCurrent")] PersonFitnessProgram personFitnessProgram)
         {
-            if (!(program.PersonId == null || program.FitnessProgramId == 0))
+            if (!(personFitnessProgram.PersonId == null || personFitnessProgram.FitnessTypeId == 0))
             {
-                _context.Add(program);
+                _context.Add(personFitnessProgram);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FitnessProgramId"] = new SelectList(_context.FitnessProgram, "Id", "Id", program.FitnessProgramId);
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FirstName", program.PersonId);
-            return View(program);
+            ViewData["FitnessTypeId"] = new SelectList(_context.FitnessType, "FitnessProgramId", "Description", personFitnessProgram.FitnessTypeId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FirstName", personFitnessProgram.PersonId);
+            return View(personFitnessProgram);
         }
 
         // GET: PersonFitnessPrograms/Edit/5
@@ -98,7 +99,7 @@ namespace StudentManager.WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["FitnessProgramId"] = new SelectList(_context.FitnessProgram, "Id", "Id", personFitnessProgram.FitnessProgramId);
+            ViewData["FitnessTypeId"] = new SelectList(_context.FitnessType, "FitnessProgramId", "Description", personFitnessProgram.FitnessTypeId);
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FirstName", personFitnessProgram.PersonId);
             return View(personFitnessProgram);
         }
@@ -108,7 +109,7 @@ namespace StudentManager.WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonId,FitnessProgramId,IsCurrent")] PersonFitnessProgram personFitnessProgram)
+        public async Task<IActionResult> Edit(int id, [Bind("PersonId,FitnessTypeId,IsCurrent")] PersonFitnessProgram personFitnessProgram)
         {
             if (id != personFitnessProgram.Id)
             {
@@ -135,8 +136,8 @@ namespace StudentManager.WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FitnessProgramId"] = new SelectList(_context.FitnessProgram, "Id", "Id", personFitnessProgram.FitnessProgramId);
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FirstName", personFitnessProgram.PersonId);
+            ViewData["FitnessTypeId"] = new SelectList(_context.FitnessType, "FitnessProgramId", "Description", personFitnessProgram.FitnessTypeId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id", personFitnessProgram.PersonId);
             return View(personFitnessProgram);
         }
 
@@ -149,7 +150,7 @@ namespace StudentManager.WebApp.Controllers
             }
 
             var personFitnessProgram = await _context.PersonFitnessProgram
-                .Include(p => p.FitnessProgram)
+                .Include(p => p.FitnessType)
                 .Include(p => p.Person)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (personFitnessProgram == null)
