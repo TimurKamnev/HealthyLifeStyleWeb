@@ -20,9 +20,12 @@ namespace StudentManager.WebApp.Controllers
         }
 
         // GET: Trainings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var appDbContext = _context.Training.Include(t => t.FitnessProgram);
+            var tr = _context.Training.FirstOrDefault(t => t.Id == id);
+            var fpid = tr.FitnessProgramId;
+
+            var appDbContext = _context.Training.Where(t => t.FitnessProgramId == tr.FitnessProgramId).Include(t => t.FitnessProgram);
             return View(await appDbContext.ToListAsync());
         }
 

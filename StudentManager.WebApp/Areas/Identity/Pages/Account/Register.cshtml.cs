@@ -158,9 +158,9 @@ namespace StudentManager.WebApp.Areas.Identity.Pages.Account
                 {
                     _shortedUserController.AddUser(user, Input.Weight, Input.Height, Input.FirstName, Input.LastName, Input.DateTime, Input.Gender);
 
+                        await _userManager.AddToRoleAsync(user, WC.Admin);
                     if (User.IsInRole(WC.Admin))
                     {
-                        await _userManager.AddToRoleAsync(user, WC.Admin);
                     }
                     else
                     {
