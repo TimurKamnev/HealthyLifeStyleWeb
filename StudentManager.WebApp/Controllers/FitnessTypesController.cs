@@ -20,9 +20,10 @@ namespace StudentManager.WebApp.Controllers
         }
 
         // GET: FitnessTypes
+
         public async Task<IActionResult> Index()
         {
-              return View(await _context.FitnessType.ToListAsync());
+            return View(await _context.FitnessType.ToListAsync());
         }
 
         // GET: FitnessTypes/Details/5

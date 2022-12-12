@@ -79,6 +79,33 @@ namespace StudentManager.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PersonFitnessProgram",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FitnessTypeId = table.Column<int>(type: "int", nullable: false),
+                    IsCurrent = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonFitnessProgram", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PersonFitnessProgram_FitnessType_FitnessTypeId",
+                        column: x => x.FitnessTypeId,
+                        principalTable: "FitnessType",
+                        principalColumn: "FitnessProgramId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PersonFitnessProgram_Person_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "Person",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FitnessTip",
                 columns: table => new
                 {
@@ -96,39 +123,6 @@ namespace StudentManager.Backend.Migrations
                         column: x => x.FitnessProgramId,
                         principalTable: "FitnessProgram",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PersonFitnessProgram",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FitnessTypeId = table.Column<int>(type: "int", nullable: false),
-                    IsCurrent = table.Column<bool>(type: "bit", nullable: false),
-                    FitnessProgramId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PersonFitnessProgram", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PersonFitnessProgram_FitnessProgram_FitnessProgramId",
-                        column: x => x.FitnessProgramId,
-                        principalTable: "FitnessProgram",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_PersonFitnessProgram_FitnessType_FitnessTypeId",
-                        column: x => x.FitnessTypeId,
-                        principalTable: "FitnessType",
-                        principalColumn: "FitnessProgramId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PersonFitnessProgram_Person_PersonId",
-                        column: x => x.PersonId,
-                        principalTable: "Person",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,11 +182,6 @@ namespace StudentManager.Backend.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_FitnessTip_FitnessProgramId",
                 table: "FitnessTip",
-                column: "FitnessProgramId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PersonFitnessProgram_FitnessProgramId",
-                table: "PersonFitnessProgram",
                 column: "FitnessProgramId");
 
             migrationBuilder.CreateIndex(

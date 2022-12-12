@@ -6,7 +6,7 @@
 
 <h1>Choose-Programm</h1>
 
-@if (User.IsInRole(WC.Admin))
+@if (User.IsInRole(WC.Admin) || (User.IsInRole(WC.User)))
 {
     <p>
         <a asp-action="Create">Create New</a>

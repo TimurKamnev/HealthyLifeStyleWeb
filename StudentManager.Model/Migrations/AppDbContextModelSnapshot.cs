@@ -197,9 +197,6 @@ namespace StudentManager.Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("FitnessProgramId")
-                        .HasColumnType("int");
-
                     b.Property<int>("FitnessTypeId")
                         .HasColumnType("int");
 
@@ -211,8 +208,6 @@ namespace StudentManager.Backend.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FitnessProgramId");
 
                     b.HasIndex("FitnessTypeId");
 
@@ -282,10 +277,6 @@ namespace StudentManager.Backend.Migrations
 
             modelBuilder.Entity("StudentManager.Backend.Entities.PersonFitnessProgram", b =>
                 {
-                    b.HasOne("StudentManager.Backend.Entities.FitnessProgram", null)
-                        .WithMany("PersonFitnessPrograms")
-                        .HasForeignKey("FitnessProgramId");
-
                     b.HasOne("StudentManager.Backend.Entities.FitnessType", "FitnessType")
                         .WithMany("PersonFitnessPrograms")
                         .HasForeignKey("FitnessTypeId")
@@ -317,8 +308,6 @@ namespace StudentManager.Backend.Migrations
             modelBuilder.Entity("StudentManager.Backend.Entities.FitnessProgram", b =>
                 {
                     b.Navigation("FitnessTips");
-
-                    b.Navigation("PersonFitnessPrograms");
 
                     b.Navigation("Trainings");
                 });

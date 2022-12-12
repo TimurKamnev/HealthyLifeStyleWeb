@@ -6,20 +6,21 @@
 
 <h1>Fitness-Programm</h1>
 
-@if(User.IsInRole(WC.Admin)){
+@if (User.IsInRole(WC.Admin))
+{
     <p>
-    <a asp-action="Create">Create New</a>
-</p>
+        <a asp-action="Create">Create New</a>
+    </p>
 }
 
 <table class="table">
     <thead>
         <tr>
             @*<th>
-                @Html.DisplayNameFor(model => model.Id) 
-            </th>*@
+                @Html.DisplayNameFor(model => model.Id)
+                </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Name) 
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -27,24 +28,23 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Name) <img class="fitness-icons" src="~/lib/images/muscle.png">
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FitnessProgramId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FitnessProgramId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FitnessProgramId">Delete</a>
-            </td>
-        </tr>
-}
+    <tbody class="FitnessTypesItem">
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name) <img class="fitness-icons" src="~/lib/images/muscle.png">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-controller="Trainings" asp-action="Index" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

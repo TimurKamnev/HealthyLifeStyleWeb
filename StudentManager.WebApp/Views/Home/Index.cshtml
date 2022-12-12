@@ -1,63 +1,96 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<body class="Bg-layout">
-<div class="">
-    <div class="text-left">
-        <div class="two"><h1 class="text-center">Build your body with us</h1></div>
-        <ul>
-            <li class="About-us-info"><span class="About-us-text">Занятие  в удобное для вас время</span>.</li>
-            <li class="About-us-info"><span class="About-us-text">Подбери оптимальную для себя программу.</span></li>
-        </ul>
-    </div>
-    
-    <div class="testtext">
-        <h3 class="main-info text-start">
-            Online personal training with HealthyLifeStyle is an <br />  <spin class="color-text">opportunity to work at your convenience</spin>
-        </h3>
-        <div class="main-personal">
-            <div class="main-personal-item">
-                <span>
-                    <img class="main-personal-item-icon" src="~/lib/images/free-icon-geolocalization-1535668.png">
-                </span>
-                <div><h5>В любом месте</h5>
-                    <p>Дома, за городом, в фитнес клубе</p>
+@*    <img class="mySlidesImg" src="./lib/images/24382127_xl.jpg">
+*@<body>
+   <div id="slideshow">
+        <div class="slide-wrapper">       
+            <div class="slide">
+                <div class="slide-number">
+                    <h1>
+                        From Everywhere <img src="./lib/images/free-icon-geolocalization-1535668.png"/>
+                    </h1>
+                    <span style="color:#000000;">
+                        From home, Outside the city, In a fitness club
+                    </span>
                 </div>
             </div>
-            <div class="main-personal-item">
-                <span >
-                    <img class="main-personal-item-icon" src="~/lib/images/free-icon-clock-8469896.png">
-                </span class="main-personal-item-icon">
-                <div><h5>В любом время</h5>
-                <p>Программа работает в любое время</p>    
+            <div class="slide">
+                <div class="slide-number">
+                    <h1>
+                        Anytime <img src="./lib/images/free-icon-clock-8469896.png"/>
+                    </h1>
+                    <span>
+                        The site works at any time 
+                    </span>
                 </div>
             </div>
-            <div class="main-personal-item">
-                <span>
-                    <img class="main-personal-item-icon" src="~/lib/images/free-icon-choices-411717.png">
-                </span>
-                <div><h5>Большой выбор</h5>
-                <p>Множетсвенный выбор программ</p>    
+            <div class="slide">
+                <div class="slide-number">
+                    <h1> 
+                        Big choice <img src="./lib/images/free-icon-choices-411717.png"/>
+                    </h1>
+                    <span>
+                        Multiple choice of training programs
+                    </span>
                 </div>
             </div>
-            <div class="main-personal-item">
-                <span>
-                    <img class="main-personal-item-icon" src="~/lib/images/free-icon-mobile-phone-545194.png">
-                </span>
-                <div><h5>С любого устройства</h5>
-                <p>Подойдет смартфон, планшет, ноутбук</p>    
+            <div class="slide">
+                <div class="slide-number">
+                    <h1>
+                        From any device <img src="./lib/images/free-icon-mobile-phone-545194.png"/>
+                    </h1>
+                    <span>
+                        Laptop, Smartphone, Tablet
+                    </span>
                 </div>
             </div>
         </div>
-    </div>  
-    <div class="d-inline-flex main-videos">
-        <div class="text-start">
-        <iframe class="video" width="400" height="200" src="https://www.youtube.com/embed/_zsW9JTZb_8" title="Ronnie Coleman In His Prime | Full Day Of Eating With The Best Bodybuilder Ever | 8X Mr Olympia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    <div class="text-center">
-        <iframe class="video" width="400" height="200" src="https://www.youtube.com/embed/h7yASn8cpOw" title="Muscle Beach" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    </div>
-    <div class="text-end">
-        <iframe class="video" width="400" height="200" src="https://www.youtube.com/embed/-iRZCS0brC4" title="MY OLYMPIA PREP MORNING ROUTINE | POSING + SHOULDER WORKOUT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    </div>
     </div>
-</div>
+
+    <div class="text-left HomepageTitle">
+        <div class="two"><h1 class="text-center">Build your body with us</h1></div>
+    </div>
+
+    <div class="HomepageInfo">
+        <h1>
+            Why gym workouts are a thing of the past
+        </h1>
+        <div class="home-container">
+            <div class="info-item">
+            <h2>
+                Time saving
+            </h2>
+            <span>
+                You do not need to waste time on the way to the gym and back
+            </span>
+        </div>
+        <div class="info-item">
+            <h2>
+               Over 100 types of exercises
+            </h2>
+            <span>
+                You are not limited to a few exercises
+            </span>
+        </div>
+        <div class="info-item">
+            <h2>
+                Multiplicity
+            </h2>
+            <span>
+                Look for different directions and to achieve the desired results
+            </span>
+        </div>
+        <div class="info-item">
+            <h2>
+                Start now
+            </h2>
+            <span>
+                Do sports anytime, anywhere
+            </span>
+        </div>
+        </div>
+    </div>
 </body>
+
+

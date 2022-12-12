@@ -22,7 +22,7 @@ html {
     .two h1 {
         font-family: 'Open Sans', sans-serif;
         position: relative;
-        color: #ffffff;
+        color: #000;
         font-size: 3em;
         font-weight: normal;
         line-height: 1;
@@ -81,13 +81,13 @@ body {
     margin-left: 20px;
     margin-right: 20px;
     box-shadow: inset;
-    color: #ffffff;
+    color: #000;
 }
 
 .About-us-text {
     font-size: 20px;
     font-family: 'Arial';
-    color: #ffffff;
+    color: #000;
 }
 
 .About-us-info > ol {
@@ -132,7 +132,7 @@ nav {
 .Main-food-div {
     display: flex;
     border-block-color: black;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .Foodtypes {
@@ -265,3 +265,274 @@ nav {
     width: 30px;
     height: 30px;
 }
+
+
+/*css form corousle on homepage*/
+
+#slideshow {
+    overflow: hidden;
+    height: 600px;
+    width: 100vw;
+    margin: 0 auto;
+}
+
+.slide {
+    float: left;
+    height: 600px;
+    width: 100vw;
+}
+
+.slide-wrapper {
+    width: calc(100vw * 4);
+    animation: slide 15s ease infinite;
+}
+
+.slide:nth-child(1) {
+    background-image: url(../lib/images/slideimg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide:nth-child(2) {
+    background-image: url(../lib/images/slideimg1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide:nth-child(3) {
+    background-image: url(../lib/images/slideimg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide:nth-child(4) {
+    background-image: url(../lib/images/slideimg3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes slide {
+    15% {
+        margin-left: 0px;
+    }
+
+    35% {
+        margin-left: calc(-100vw * 1);
+    }
+
+    55% {
+        margin-left: calc(-100vw * 2);
+    }
+
+    80% {
+        margin-left: calc(-100vw * 3);
+    }
+}
+
+.slide-number {
+    padding: 400px 0 0 40px;
+}
+
+.slide-number h1{
+    font-size: 60px;
+    color: #31c581;
+}
+
+.slide-number span {
+    font-size: 35px;
+    color: #fff;
+}
+
+.slide-number img{
+    width: 50px;
+    height: 50px;
+}
+
+.HomepageTitle{
+    padding: 50px 0 50px 0;
+    height: 250px;
+    background-color: #fff;
+}
+
+.home-container {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.HomepageInfo {
+    padding-top: 50px;
+    height: 420px;
+    background-color: #000000;
+    width: 100%;
+}
+
+.HomepageInfo h1{
+    padding-left: 30px;
+    color: #fff;
+}
+
+.info-item:nth-child(1) {
+    border-radius: 10px;
+    width: 20%;
+    background: rgb(108,38,255);
+    background: linear-gradient(90deg, rgba(108,38,255,1) 2%, rgba(110,65,207,1) 89%);
+    height: 200px;
+    padding: 20px;
+}
+
+.info-item:nth-child(2) {
+    border-radius: 10px;
+    width: 20%;
+    background: rgb(251,47,47);
+    background: linear-gradient(90deg, rgba(251,47,47,1) 2%, rgba(255,29,252,1) 89%);
+    height: 200px;
+    padding: 20px;
+}
+.info-item:nth-child(3) {
+    border-radius: 10px;
+    width: 20%;
+    background: rgb(176,255,47);
+    background: linear-gradient(90deg, rgba(176,255,47,1) 2%, rgba(137,215,11,1) 89%);
+    height: 200px;
+    padding: 20px;
+}
+.info-item:nth-child(4) {
+    border-radius: 10px;
+    width: 20%;
+    background: rgb(255,84,47);
+    background: linear-gradient(90deg, rgba(255,84,47,1) 10%, rgba(215,109,11,1) 90%);
+    height: 200px;
+    padding: 20px;
+}
+
+.info-item h2{
+    padding-bottom: 20px;
+    color: #fff;
+    font-size: 30px;
+}
+
+.info-item:nth-child(3) h2{
+    color: #000000;
+}
+
+.info-item:nth-child(2) h2 {
+    padding-bottom: 0;
+}
+
+.info-item span{
+    color: #fff;
+}
+
+.info-item:nth-child(3) span {
+    color: #000000;
+}
+
+.Training-item {
+    height: 200px;
+   background: rgb(255,84,47);
+    background: linear-gradient(90deg, rgba(255,84,47,1) 10%, rgba(215,109,11,1) 90%);
+}
+
+/*LOGO*/
+
+.logotype4 {
+    position: relative;
+    color: #337AB7;
+    letter-spacing: 2px;
+    display: inline-block;
+    line-height: 45px;
+    font-size: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-variant: small-caps;
+    transition: color 0.3s ease;
+    text-shadow: 1px 1px #fffcf5, 3px 3px;
+    margin-bottom: 20px;
+}
+
+    .logotype4 b {
+        font-variant: normal;
+    }
+
+    .logotype4 div {
+        position: absolute;
+        font-size: 20px;
+        font: bold;
+        text-shadow: 1px 1px #fffcf5;
+        transition: all 0.3s ease;
+        letter-spacing: 0;
+        left: 0;
+        white-space: nowrap;
+        transform: translateX(0);
+    }
+
+    .logotype4:hover {
+        color: #2d6b9f;
+    }
+
+        .logotype4:hover div {
+            left: 100%;
+            transform: translateX(-100%);
+        }
+
+@media (max-width:600px) {
+    .logotype4, .logotype4:hover {
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+        .logotype4 b {
+            font-size: 32px;
+        }
+
+        .logotype4 div {
+            font-size: 18px;
+        }
+}
+
+/*FitnessTypesPage*/
+
+.FitnessTypesItem {
+    vertical-align: inherit;
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+/*
+.table > tbody:nth-child(1) {
+    vertical-align: inherit;
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
