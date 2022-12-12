@@ -39,9 +39,9 @@
                 @Html.DisplayFor(modelItem => item.FitnessProgram.Id)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <button style="border-radius: 10px; background-color: rgba(215,109,11,1)">
+                        <a style="font-size: 30px; color:#fff" asp-controller="Exercises" asp-action="Index" asp-route-id="@item.Id">Find</a>
+                    </button>
             </td>
         </tr>
 }
