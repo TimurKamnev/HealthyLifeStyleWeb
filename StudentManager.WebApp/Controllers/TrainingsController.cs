@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Fitness.Infrastracture;
 using StudentManager.Backend.Entities;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace StudentManager.WebApp.Controllers
 {
@@ -20,12 +21,19 @@ namespace StudentManager.WebApp.Controllers
         }
 
         // GET: Trainings
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int id = 0)
         {
-            var tr = _context.Training.FirstOrDefault(t => t.Id == id);
-            var fpid = tr.FitnessProgramId;
+            IIncludableQueryable<Training, FitnessProgram> appDbContext;
+            if (id == 0)
+            {
+                appDbContext = _context.Training.Include(t => t.FitnessProgram);
+            }
+            else
+            {
+                appDbContext = _context.Training
+                .Where(t => t.FitnessProgramId == id).Include(t => t.FitnessProgram);
+            }
 
-            var appDbContext = _context.Training.Where(t => t.FitnessProgramId == tr.FitnessProgramId).Include(t => t.FitnessProgram);
             return View(await appDbContext.ToListAsync());
         }
 

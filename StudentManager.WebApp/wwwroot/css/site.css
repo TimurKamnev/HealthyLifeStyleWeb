@@ -497,13 +497,12 @@ nav {
 /*FitnessTypesPage*/
 
 .FitnessTypesItem {
-    vertical-align: inherit;
-    display: flex;
-    flex-direction: row;
+
     width: 90vw;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: center;
+    margin: 0 auto;
 }
 
 /*
@@ -517,6 +516,50 @@ nav {
     align-items: flex-end;
 }
 */
+
+.Fit-Types-Title {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    border-top: solid 10px;
+}
+
+.Fit-Types-Create {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    border-bottom: solid 10px;
+}
+
+    .Fit-Types-Create td:nth-child(1){
+        color: #fff;
+        font-size: 30px;
+    }
+
+    .Fit-Types-Create a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .Fit-Types-Create button {
+        border-radius: 10px;
+        background-color: rgba(215,109,11,1);
+        transition: 1s;
+        margin-top: 10px;
+    }
+
+    .Fit-Types-Create button:hover{
+        border-radius: 10px;
+        background-color: rgba(215,109,11,1);
+        transform: scale(1.5);
+    }
+
+.table {
+    background-color: #16222b;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
 
 
 

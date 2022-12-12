@@ -4,26 +4,28 @@
     ViewData["Title"] = "Exercises";
 }
 
-<h1>Exercises</h1>
+<h1 class="Fit-Types-Title">Exercises</h1>
 
 @if(User.IsInRole(WC.Admin)){
-    <p>
-    <a asp-action="Create">Create New</a>
+    <p style="display:flex; justify-content:center">
+    <button style="border-radius: 10px ;background-color: rgba(215,109,11,1); margin-top:10px" class="Fit-Types-Create">
+        <a asp-action="Create">Create New</a>
+    </button>
 </p>
 }
-<table class="table">
+<table class="table table-fit-type">
     <thead>
         <tr>
-            <th>
+            <th style="color:#ffffff; font-size: 40px">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th style="color:white; font-size: 40px;">
                 @Html.DisplayNameFor(model => model.CountOfRepeats)
-            </th>
-            <th>
+            </th> 
+            <th style="color:#ffffff; font-size: 40px;">
                 @Html.DisplayNameFor(model => model.Training)
             </th>
-            <th>
+            <th style="color:#ffffff; font-size: 40px;">
                 @Html.DisplayNameFor(model => model.Video)
             </th>
             <th></th>
@@ -32,16 +34,16 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td style="color:#fff">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+            <td style="color:#fff">
                 @Html.DisplayFor(modelItem => item.CountOfRepeats)
             </td>
-            <td>
+            <td style="color:#fff">
                 @Html.DisplayFor(modelItem => item.Training.Type)
             </td>
-            <td>
+            <td style="color:#fff">
                 @Html.DisplayFor(modelItem => item.Video)
             </td>
             <td>

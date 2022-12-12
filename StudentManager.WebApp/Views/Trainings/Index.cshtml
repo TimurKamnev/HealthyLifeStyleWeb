@@ -4,24 +4,24 @@
     ViewData["Title"] = "Trainings";
 }
 
-<h1>Trainings</h1>
+<h1 class="Fit-Types-Title">Trainings</h1>
 @if (User.IsInRole(WC.Admin))
 {
     <p>
-        <a asp-action="Create">Create New</a>
+        <button class="Fit-Types-Create"><a asp-action="Create">Create New</a></button>
     </p>
 }
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th  style="color:#ffffff; font-size: 40px">
                 @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
+            </th >
+            <th  style="color:#ffffff; font-size: 40px">
                 @Html.DisplayNameFor(model => model.Duration)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FitnessProgram)
+            <th  style="color:#ffffff; font-size: 40px">
+                @Html.DisplayNameFor(model => model.FitnessProgramId)
             </th>
             <th></th>
         </tr>
@@ -29,15 +29,13 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                <div class="Training-item">
+            <td style="color:#fff">
                     @Html.DisplayFor(modelItem => item.Type)
-                </div>
             </td>
-            <td>
+            <td style="color:#fff">
                 @Html.DisplayFor(modelItem => item.Duration)
             </td>
-            <td>
+            <td style="color:#fff">
                 @Html.DisplayFor(modelItem => item.FitnessProgram.Id)
             </td>
             <td>

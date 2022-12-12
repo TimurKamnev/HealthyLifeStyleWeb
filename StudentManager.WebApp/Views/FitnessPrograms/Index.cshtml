@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="Fit-Types-Title">Index</h1>
 @if(User.IsInRole(WC.Admin)){
     <p>
-    <a asp-action="Create">Create New</a>
+   <button class="Fit-Types-Create"> <a asp-action="Create">Create New</a></button>
 </p>
 }
 
